@@ -131,7 +131,7 @@ for player in players:
     results[players[player].name] = []
 # simulate games
 
-for n in range(10000):
+for n in range(1000):
     result = play_game(players)
     results[result[0]].append(result[1])
     # reset player's position attributes before next game
@@ -163,9 +163,11 @@ data = [value for value in results.values()]
 data.append(total)
 names = [key for key in results.keys()]
 names.append("Total")
+
+flierprops = dict(marker='o', markersize=4)
 fig1, ax1 = plt.subplots()
 ax1.set_title("Game results for each player")
-ax1.boxplot(data)
+ax1.boxplot(data, flierprops=flierprops, showmeans=True, meanline=True)
 ax1.set_xlabel("Winner")
 ax1.set_ylabel("Number of times the winner rolled the die")
 ax1.set_xticklabels(names, rotation=30, fontsize=10)
