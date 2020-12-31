@@ -91,9 +91,22 @@ def input_players():
     return players
 
 
+def input_num_simul():
+    """
+    () -> int
+    Asks the user for the number of simulations to run.
+    Min number: 100.
+    Returns num_simul (int)
+    """
+    num_simul = int(pyip.inputNum(prompt='Enter number of simulations to run.\nMin: 100, Max: as much as you want.   :',
+                                  min=100,
+                                  max=None))
+    return num_simul
+
+
 def play_game(players):
     """
-    (dict) -> stats XXXXXXXXXXXXXXXXXXX
+    (dict) -> stats
     Runs a simulation of one game.
     Returns the winner's name and the number of times she had to roll the die to win.
     """
@@ -128,8 +141,10 @@ results = {}
 for player in players:
     results[players[player].name] = []
 
+num_simul = input_num_simul()
+
 # simulate games
-for n in range(1000):
+for n in range(num_simul):
     result = play_game(players)
     results[result[0]].append(result[1])
     # reset player's position attributes before next game
@@ -162,12 +177,14 @@ data = [value for value in results.values()]
 data.append(total)
 names = [key for key in results.keys()]
 names.append("Total")
-
+# color='black', marker='o', markersize=3,
+# legend = mlines.Line2D([], [], label='Number of simulations: {}'.format(num_simul))
 flierprops = dict(marker='o', markersize=4)
 fig1, ax1 = plt.subplots()
-ax1.set_title("Game results for each player")
+ax1.set_title("Game results for each player - {} simulations".format(num_simul))
 ax1.boxplot(data, flierprops=flierprops, showmeans=True, meanline=True)
 ax1.set_xlabel("Winner")
 ax1.set_ylabel("Number of times the winner rolled the die")
 ax1.set_xticklabels(names, rotation=30, fontsize=10)
+# ax1.legend(handles=[legend], frameon=False, bbox_to_anchor=(1.05, 1), loc='upper center')
 plt.show()
