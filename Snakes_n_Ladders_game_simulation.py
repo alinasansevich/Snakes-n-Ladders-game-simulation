@@ -13,8 +13,7 @@ import statistics
 import pyinputplus as pyip
 import datetime
 
-# random.seed(1)
-##### classes
+
 class Board():
     """A class representing the game's board."""
     def __init__(self):
@@ -75,7 +74,7 @@ class Player(Die):
             return True
 
 
-def input_players():  ######### THIS METHOD WORKS, I CHECKED
+def input_players():
     """
     Asks the user for the number of players and their names.
     Create the Player objects.
@@ -120,7 +119,6 @@ def play_game(players):
     return players[player].name, counter
 
 
-
 ### GAME SIMULATION STARTS HERE
 start = datetime.datetime.now()
 print("Welcome to Snakes and Ladders.\n")
@@ -129,8 +127,8 @@ players = input_players()
 results = {}
 for player in players:
     results[players[player].name] = []
-# simulate games
 
+# simulate games
 for n in range(1000):
     result = play_game(players)
     results[result[0]].append(result[1])
@@ -146,6 +144,7 @@ total = []
 for item in t:
     total += item
 
+# game stats per player:
 for player in players:
     print("\n")
     print(players[player].name)
@@ -156,9 +155,9 @@ for player in players:
 
 end = datetime.datetime.now()
 runtime = (end - start).seconds
-print("runtime: ", runtime) ### XXXXXXXXXXX
-# plot the results
-##### ARMAR UN BOXPLOT x JUGADOR (TODOS EN UN MISMO GRAF) Y UNO GLOBAL APARTE  
+print("runtime: ", runtime)
+
+# Plot the results
 data = [value for value in results.values()]
 data.append(total)
 names = [key for key in results.keys()]
@@ -172,8 +171,3 @@ ax1.set_xlabel("Winner")
 ax1.set_ylabel("Number of times the winner rolled the die")
 ax1.set_xticklabels(names, rotation=30, fontsize=10)
 plt.show()
-
-##### AFTER the end of the simulation:
-        ### ask "Try again with another die?
-        ### or maybe more iterations? or both?
-###### ADD deltatime
