@@ -9,6 +9,5 @@ The complete results and statistics can be found in the .ipynb file.
 
 This program is based on my own board. There are different board designs available in the market, so this answers the question for the one shown in the image below.
 
-ADD IMAGE HERE
-Fig Legend:
+![game_board].(game_board.jpg)
 ##### The "Snakes and Ladders" board on which this simulation is based.
