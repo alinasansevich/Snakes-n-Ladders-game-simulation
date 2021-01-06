@@ -1,6 +1,7 @@
 # A simulation of the game "Snakes and Ladders".
 
-What is the minimun number of die rolls needed to win the game?<br>
+_What is the minimun number of die rolls needed to win the game?_<br>
+
 To find out, I wrote this simulation.
 
 To choose the number of players (1-4) and the number of simulations to run (min: 100, max: as much as you want), run the .py file. 
