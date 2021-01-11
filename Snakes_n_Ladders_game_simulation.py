@@ -174,9 +174,9 @@ print("runtime: ", runtime)
 
 # Plot the results
 data = [value for value in results.values()]
-data.append(total)
+# data.append(total)
 names = [key for key in results.keys()]
-names.append("Total")
+# names.append("Total")
 # color='black', marker='o', markersize=3,
 # legend = mlines.Line2D([], [], label='Number of simulations: {}'.format(num_simul))
 flierprops = dict(marker='o', markersize=4)
