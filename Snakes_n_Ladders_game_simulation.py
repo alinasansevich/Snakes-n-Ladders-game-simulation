@@ -5,7 +5,7 @@ Created on Thu Aug  6 00:16:06 2020
 
 @author: alina
 
-A simulation of the game "Snakes and Ladders". XXXXXXXXXXXXXX
+A simulation of the game "Snakes and Ladders".
 """
 import random
 import matplotlib.pyplot as plt
@@ -152,12 +152,12 @@ for n in range(num_simul):
         players[player].position = 0
         players[player].all_positions = []
 
-t = []
-for value in results.values():
-    t.append(value)
-total = []
-for item in t:
-    total += item
+# t = []
+# for value in results.values():
+#     t.append(value)
+# total = []
+# for item in t:
+#     total += item
 
 # game stats per player:
 for player in players:
