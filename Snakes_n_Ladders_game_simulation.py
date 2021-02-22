@@ -115,17 +115,14 @@ def play_game(players):
     
     while board.squares[100] == 'empty':
         counter += 1
-        # print("round", counter)
         for player in players.keys():
             current_square = players[player].move(players[player].roll())
             players[player].landing(current_square, board)
             player_position = players[player].position
             player_name = players[player].name
             player_prev_position = players[player].all_positions[-1]
-            # print(player_name, player_position, players[player].all_positions)
             board.update_board(player_position, player_name, player_prev_position)
             if players[player].win():
-                # print("{} wins!".format(players[player].name))
                 board.squares[100] = players[player].name
                 break
 
@@ -152,13 +149,6 @@ for n in range(num_simul):
         players[player].position = 0
         players[player].all_positions = []
 
-# t = []
-# for value in results.values():
-#     t.append(value)
-# total = []
-# for item in t:
-#     total += item
-
 # game stats per player:
 for player in players:
     print("\n")
@@ -174,11 +164,8 @@ print("runtime: ", runtime)
 
 # Plot the results
 data = [value for value in results.values()]
-# data.append(total)
 names = [key for key in results.keys()]
-# names.append("Total")
-# color='black', marker='o', markersize=3,
-# legend = mlines.Line2D([], [], label='Number of simulations: {}'.format(num_simul))
+
 flierprops = dict(marker='o', markersize=4)
 fig1, ax1 = plt.subplots()
 ax1.set_title("Game results for each player - {} simulations".format(num_simul))
@@ -186,5 +173,4 @@ ax1.boxplot(data, flierprops=flierprops, showmeans=True, meanline=True)
 ax1.set_xlabel("Winner")
 ax1.set_ylabel("Number of times the winner rolled the die")
 ax1.set_xticklabels(names, rotation=30, fontsize=10)
-# ax1.legend(handles=[legend], frameon=False, bbox_to_anchor=(1.05, 1), loc='upper center')
 plt.show()
